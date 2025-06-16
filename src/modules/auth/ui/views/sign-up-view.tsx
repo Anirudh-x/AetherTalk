@@ -21,23 +21,29 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
 
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { FaGithub, FaGoogle } from "react-icons/fa";
+
+
+
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email(),
-  password: z.string().min(6, {message: "Password must be at least 6 characters"}),
-  confirmpassword: z.string().min(6, {message: "Password must be at least 6 characters"})
+  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+  confirmpassword: z.string().min(6, { message: "Password must be at least 6 characters" })
 })
-.refine((data) => data.password === data.confirmpassword, {
-  message: "Passwords do not match",
-  path: ["confirmpassword"],
-});
+  .refine((data) => data.password === data.confirmpassword, {
+    message: "Passwords do not match",
+    path: ["confirmpassword"],
+  });
 
 export const SignUpView = () => {
 
   const router = useRouter();
+
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -52,22 +58,46 @@ export const SignUpView = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    
+
     setError(null);
     setPending(true);
-    
+
     authClient.signUp.email(
       {
         name: data.name,
         email: data.email,
         password: data.password,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setPending(false);
           router.push("/");
         },
-        onError: ({error}) => {
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        }
+      }
+
+    );
+  };
+
+  const onSocial = (provider: "github" | "google") => {
+
+    setError(null);
+    setPending(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setPending(false);
+        },
+        onError: ({ error }) => {
           setPending(false);
           setError(error.message);
         }
@@ -86,7 +116,7 @@ export const SignUpView = () => {
               <div className="flex flex-col gap-6">
 
                 <div className="flex flex-col items-center text-center">
-                  <h1  className="text-2xl font-bold">
+                  <h1 className="text-2xl font-bold">
                     Let&apos;s get you started
                   </h1>
                   <p className="text-muted-foreground text-balance">
@@ -101,11 +131,11 @@ export const SignUpView = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Name</FormLabel>
-                        
+
                         <FormControl>
                           <Input type="text" placeholder="AetherTalk" {...field} />
                         </FormControl>
-                        
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -119,11 +149,11 @@ export const SignUpView = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Email</FormLabel>
-                        
+
                         <FormControl>
                           <Input type="email" placeholder="aethertalk@gmail.com" {...field} />
                         </FormControl>
-                        
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -137,11 +167,11 @@ export const SignUpView = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Password</FormLabel>
-                        
+
                         <FormControl>
                           <Input type="password" placeholder="********" {...field} />
                         </FormControl>
-                        
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -155,11 +185,11 @@ export const SignUpView = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Confirm Password</FormLabel>
-                        
+
                         <FormControl>
                           <Input type="password" placeholder="********" {...field} />
                         </FormControl>
-                        
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -173,11 +203,11 @@ export const SignUpView = () => {
                   </Alert>
                 )}
 
-                <Button 
+                <Button
                   type="submit"
                   className="w-full"
                   disabled={pending}
-                  >
+                >
                   Sign In
                 </Button>
 
@@ -188,18 +218,30 @@ export const SignUpView = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" type="button" disabled={pending} className="w-full">
-                    Google
+                  <Button
+                    variant="outline"
+                    type="button"
+                    disabled={pending}
+                    className="w-full"
+                    onClick={() => onSocial("google")}
+                  >
+                    <FaGoogle />
                   </Button>
-                  <Button variant="outline" type="button" disabled={pending} className="w-full">
-                    GitHub
+                  <Button
+                    variant="outline"
+                    type="button"
+                    disabled={pending}
+                    className="w-full"
+                    onClick={() => onSocial("github")}
+                  >
+                    <FaGithub />
                   </Button>
                 </div>
 
                 <div className="text-center text-sm">
-                  Already have an account? {" "} 
+                  Already have an account? {" "}
                   <Link href="/sign-in" className="underline underline-offset-4">
-                  Sign In
+                    Sign In
                   </Link>
                 </div>
 

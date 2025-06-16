@@ -21,8 +21,10 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
 
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 
 const formSchema = z.object({
@@ -30,17 +32,11 @@ const formSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 })
 
-
-
-
-
-
-
-
-
 export const SignInView = () => {
 
   const router = useRouter();
+
+
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -53,21 +49,22 @@ export const SignInView = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    
+
     setError(null);
     setPending(true);
-    
+
     authClient.signIn.email(
       {
         email: data.email,
         password: data.password,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setPending(false);
           router.push("/");
         },
-        onError: ({error}) => {
+        onError: ({ error }) => {
           setPending(false);
           setError(error.message);
         }
@@ -75,6 +72,32 @@ export const SignInView = () => {
 
     );
   };
+
+
+  const onSocial = (provider: "github" | "google") => {
+
+    setError(null);
+    setPending(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setPending(false);
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        }
+      }
+
+    );
+  };
+
+
 
   return (
     <div className="flex flex-col gap-6">
@@ -86,7 +109,7 @@ export const SignInView = () => {
               <div className="flex flex-col gap-6">
 
                 <div className="flex flex-col items-center text-center">
-                  <h1  className="text-2xl font-bold">
+                  <h1 className="text-2xl font-bold">
                     Welcome Back
                   </h1>
                   <p className="text-muted-foreground text-balance">
@@ -101,11 +124,11 @@ export const SignInView = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Email</FormLabel>
-                        
+
                         <FormControl>
                           <Input type="email" placeholder="aethertalk@gmail.com" {...field} />
                         </FormControl>
-                        
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -119,11 +142,11 @@ export const SignInView = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Password</FormLabel>
-                        
+
                         <FormControl>
                           <Input type="password" placeholder="********" {...field} />
                         </FormControl>
-                        
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -137,11 +160,11 @@ export const SignInView = () => {
                   </Alert>
                 )}
 
-                <Button 
+                <Button
                   type="submit"
                   className="w-full"
                   disabled={pending}
-                  >
+                >
                   Sign In
                 </Button>
 
@@ -152,18 +175,33 @@ export const SignInView = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" type="button" disabled={pending} className="w-full">
-                    Google
+                  <Button
+                    variant="outline"
+                    type="button"
+                    disabled={pending}
+                    className="w-full"
+                    onClick={() => onSocial("google")}
+                  >
+                    <FaGoogle />
+
                   </Button>
-                  <Button variant="outline" type="button" disabled={pending} className="w-full">
-                    GitHub
+                  <Button
+                    variant="outline"
+                    type="button"
+                    disabled={pending}
+                    className="w-full"
+                    onClick={() => onSocial("github")}
+
+                  >
+                    <FaGithub />
+
                   </Button>
                 </div>
 
                 <div className="text-center text-sm">
-                  Don&apos;t have an account? {" "} 
+                  Don&apos;t have an account? {" "}
                   <Link href="/sign-up" className="underline underline-offset-4">
-                  Sign Up
+                    Sign Up
                   </Link>
                 </div>
 
