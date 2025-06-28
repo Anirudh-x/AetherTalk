@@ -21,13 +21,13 @@ const Page = async ({ searchParams }: Props) => {
   const filters = await loadSearchParams(searchParams);
 
   const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-  
-    if (!session) {
-      redirect("/sign-in");
-  
-    }
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/sign-in");
+
+  }
 
   const queryClient = getQueryClient();
   void queryClient.prefetchQuery(
@@ -38,7 +38,7 @@ const Page = async ({ searchParams }: Props) => {
 
   return (
     <>
-    <MeetingsListHeader />
+      <MeetingsListHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<MeetingsViewLoading />}>
           <ErrorBoundary fallback={<MeetingsViewError />}>
