@@ -15,7 +15,8 @@
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
+  /* --color-sidebar: var(--sidebar); */
+  --color-auth-page-logo-bg: var(--auth-page-logo-bg);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -45,20 +46,21 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #E0F2FE;
   --foreground: oklch(0.13 0.028 261.692);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.13 0.028 261.692);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.13 0.028 261.692);
   /*  */
-  --primary: oklch(0.63 0.1699 149.21); /* Primary (Buttons etc) */
+  /* --primary: oklch(0.63 0.1699 149.21); Primary (Buttons etc) */
+  --primary: #0384C6; 
   --primary-foreground: oklch(0.985 0.002 247.839);
   --secondary: oklch(0.967 0.003 264.542);
   --secondary-foreground: oklch(0.21 0.034 264.665);
-  --muted: oklch(0.967 0.003 264.542);
+  --muted: #E0F2FE;
   --muted-foreground: oklch(0.551 0.027 264.364);
-  --accent: oklch(0.967 0.003 264.542);
+  --accent: #75D2FE;
   --accent-foreground: oklch(0.21 0.034 264.665);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.928 0.006 264.531);
@@ -70,12 +72,21 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   /*  */
-  --sidebar: oklch(0.2 0.0283 174.92);  /* Background Color */
-  --sidebar-foreground: oklch(0.82 0.0057 182.99); /* Text Color */
+
+  /* --sidebar: oklch(0.2 0.0283 174.92);  Background Color */
+  --auth-page-logo-bg: #75D2FE; 
+  --sidebar: #75D2FE; 
+
+  /* --sidebar-foreground: oklch(0.82 0.0057 182.99); Text Color */
+  --sidebar-foreground: #A7EBF2;
+
   --sidebar-primary: oklch(0.21 0.034 264.665);
-  --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-accent: oklch(0.34 0.0601 171.21); /* Active item Background Color */
-  --sidebar-accent-foreground: oklch(1 0 0); /* Active item Text Color */
+  --sidebar-primary-foreground: #A7EBF2;
+
+  /* --sidebar-accent: oklch(0.34 0.0601 171.21); Active item Background Color */
+  --sidebar-accent: #75D2FE;
+
+  --sidebar-accent-foreground: white; /* Active item Text Color */
   --sidebar-border: oklch(0.928 0.006 264.531);
   --sidebar-ring: oklch(0.707 0.022 261.325);
 }
