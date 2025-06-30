@@ -240,7 +240,7 @@ export const SignUpView = () => {
 
                 <div className="text-center text-sm">
                   Already have an account? {" "}
-                  <Link href="/sign-in" className="underline underline-offset-4">
+                  <Link href="/sign-in" className="underline underline-offset-4 text-primary">
                     Sign In
                   </Link>
                 </div>
@@ -249,7 +249,7 @@ export const SignUpView = () => {
             </form>
           </Form>
 
-          <div className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+          <div className="bg-auth-page-logo-bg relative hidden md:flex flex-col gap-y-4 items-center justify-center">
             <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]"></img>
             <p className="text-2xl text-white font-semibold">
               AetherTalk
@@ -259,7 +259,7 @@ export const SignUpView = () => {
       </Card>
 
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <Link href="/terms">Terms of Service</Link> and <Link href="/privacy">Privacy Policy</Link>.
+        By clicking continue, you agree to our <Link href="/terms" className="text-primary">Terms of Service</Link> and <Link href="/privacy" className="text-primary">Privacy Policy</Link>.
       </div>
 
     </div>
