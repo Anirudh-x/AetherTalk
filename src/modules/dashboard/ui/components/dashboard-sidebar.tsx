@@ -19,6 +19,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { DashboardUserButton } from "./dashboard-user-button"
+import { DashboardTrial } from "./dashboard-trial"
 
 
 const firstSection = [
@@ -51,7 +52,7 @@ export const DashboardSidebar = () => {
     <Sidebar>
       <SidebarHeader className="text-sidebar-accent-foreground">
         <Link href="/" className="flex items-center gap-2 px-2 pt-2 " >
-          <Image src="/logo.svg" height={36} width={36} alt="AetherTalk"/>
+          <Image src="/logo.svg" height={36} width={36} alt="AetherTalk" />
           <p className="text-2xl font-semibold">AetherTalk</p>
         </Link>
       </SidebarHeader>
@@ -123,6 +124,7 @@ export const DashboardSidebar = () => {
       </SidebarContent>
 
       <SidebarFooter className="text-white">
+        <DashboardTrial />
         <DashboardUserButton />
       </SidebarFooter>
 
