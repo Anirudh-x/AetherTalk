@@ -10,17 +10,17 @@ Track usage and upgrade to premium plans
 
 
 # Use Cases
-Remote Teams & Organizations
-Project Documentation
-Personal Productivity
-Customer Support & Sales
+Remote Teams & Organizations.
+Project Documentation.
+Personal Productivity.
+Customer Support & Sales.
 
 # How It Helps in the Real World
-### Saves Time: No need to take manual notes—AI generates summaries and transcripts automatically.
-### Improves Recall: Users can revisit any meeting, search transcripts, and ask the AI for clarifications.
-### Boosts Collaboration: Summaries and transcripts can be shared, ensuring everyone is on the same page.
-### Enhances Productivity: Action items and key points are easily extracted and tracked.
-### Supports Compliance: Having records of meetings can help with legal or compliance requirements.
+Saves Time: No need to take manual notes—AI generates summaries and transcripts automatically.
+Improves Recall: Users can revisit any meeting, search transcripts, and ask the AI for clarifications.
+Boosts Collaboration: Summaries and transcripts can be shared, ensuring everyone is on the same page.
+Enhances Productivity: Action items and key points are easily extracted and tracked.
+Supports Compliance: Having records of meetings can help with legal or compliance requirements.
 
 
 # Tech Stack
