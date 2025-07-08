@@ -1,5 +1,5 @@
 # What is AetherTalk?
-## AetherTalk is a smart meeting assistant platform that leverages AI to make meetings more productive, searchable, and actionable, with features that go beyond simple video calls by adding automated transcription, summarization, and AI-powered Q&A
+AetherTalk is a smart meeting assistant platform that leverages AI to make meetings more productive, searchable, and actionable, with features that go beyond simple video calls by adding automated transcription, summarization, and AI-powered Q&A
 
 ## AetherTalk is a collaborative meeting platform that allows users to:
 Schedule and manage meetings
