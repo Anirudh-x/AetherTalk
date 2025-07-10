@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 
-import { BotIcon, StarIcon, VideoIcon } from "lucide-react"
+import { BotIcon, HomeIcon, StarIcon, VideoIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -23,6 +23,11 @@ import { DashboardTrial } from "./dashboard-trial"
 
 
 const firstSection = [
+  {
+    icon: HomeIcon,
+    lable: "Home",
+    href: "/"
+  },
   {
     icon: VideoIcon,
     lable: "Meetings",
