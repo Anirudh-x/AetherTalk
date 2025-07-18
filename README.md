@@ -1,31 +1,48 @@
 # What is AetherTalk?
-## AetherTalk is a smart meeting assistant platform that leverages AI to make meetings more productive, searchable, and actionable, with features that go beyond simple video calls by adding automated transcription, summarization, and AI-powered Q&A
+### AetherTalk is a smart meeting assistant platform that leverages AI to make meetings more productive, searchable, and actionable, with features that go beyond simple video calls by adding automated transcription, summarization, and AI-powered Q&A. AetherTalk is an AI-powered video call web application which allows users to host and join meetings with custom AI agents in real-time.
 
-## AetherTalk is a collaborative meeting platform that allows users to:
-Schedule and manage meetings
-Record and transcribe meetings automatically
-Summarize meetings using AI
-Chat with an AI assistant about past meetings
-Track usage and upgrade to premium plans
+The goal of the AetherTalk is to enable real-time, AI-powered video meetings where users could interact seamlessly with intelligent agents. The platform allows users to join video calls with AI agents that can speak, respond, and engage in meaningful conversations in real time. AetherTalk also empowers users to create custom AI agents by defining their names, profile pictures, personalities, instructions, and specific use cases—such as a coach, tutor, or sales assistant. These agents are designed to assist users during meetings according to their assigned roles and contexts. In addition to enhancing live interactions, the platform automates post-meeting processing by running background jobs that generate AI-powered summaries, extract and store transcripts, and create playback recordings. Furthermore, AetherTalk integrates tools like Stream Chat and AgentKit to launch context-aware AI chats and leverages Inngest for managing asynchronous workflows and webhooks efficiently.
 
 
-# Use Cases
-Remote Teams & Organizations
-Project Documentation
-Personal Productivity
-Customer Support & Sales
+## Here’s how the AetherTalk was developed.
+1. Initialized Next.js 15 and React 19 project with TypeScript and required setup options.
+2. Installed and configured Tailwind CSS v4 along with Shadcn/ui for reusable UI components.
+3. Set up PostgreSQL database using Neon and connected it via Drizzle ORM.
+4. Defined and generated database schema (users, sessions, agents, meetings) using Drizzle.
+5. Integrated Better Auth for authentication (email, social login, session handling).
+6. Configured environment variables (.env) for API keys, DB URL, domain, and secrets.
+7. Created authentication routes and UI to support login, registration, and sign-out.
+8. Integrated Stream Video SDK for real-time video meetings.
+9. Connected OpenAI APIs for AI agent communication within meetings.
+10. Built a UI to create and manage AI agents with role, instructions, and avatar.
+11. Implemented meeting scheduling with host/guest and AI agent selection options.
+12. Developed lobby screen for device check (camera/mic) before joining a call.
+13. Enabled real-time AI interaction in video meetings using OpenAI assistant pipelines.
+14. Set up post-call background jobs using Inngest to process meeting data.
+15. Automated AI summaries and transcript generation after each video call.
+16. Stored meeting metadata and summaries in the database for user access.
+17. Integrated Stream Chat SDK for post-meeting AI-powered Q&A features.
+18. Created a dashboard for managing meetings, transcripts, and recordings.
+19. Set up Polar for subscription payments and integrated it with auth logic.
+20. Enforced usage limits (free tier caps) and gated features with upgrade prompts.
+21. Designed responsive layouts for mobile and desktop using Tailwind & conditional components.
+22. Formed git branches for each dev stage and committed changes throughout.
+24. Tested all flows (auth, AI, videos, billing) in development using local and hosted environments.
+25. Prepared the project for deployment with production configs and error handling.
 
-# How It Helps in the Real World
-### Saves Time: No need to take manual notes—AI generates summaries and transcripts automatically.
-### Improves Recall: Users can revisit any meeting, search transcripts, and ask the AI for clarifications.
-### Boosts Collaboration: Summaries and transcripts can be shared, ensuring everyone is on the same page.
-### Enhances Productivity: Action items and key points are easily extracted and tracked.
-### Supports Compliance: Having records of meetings can help with legal or compliance requirements.
+
+## Some important features of the AetherTalk include:
+* AI-powered real-time video meetings
+* Custom AI agent creation
+* Automated meeting post-processing
+* Integrated conversational AI
+* Background job automation
+* Full meeting management
 
 
 # Tech Stack
 
-### Frontend
+## Frontend
 Next.js 15 (15.3.2)
 React 19
 TypeScript 5
